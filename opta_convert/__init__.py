@@ -9,14 +9,16 @@ def convert_id(opta_id):
 
 
 def player_id(elem):
-    if elem.get('TeamId') == 'Ball':
+    if team_id(elem) == 0:
         return 0
 
-    return convert_id(elem.get('PersonId'))
+    player = elem.get('PersonId') or elem.get('Object')
+
+    return convert_id(player)
 
 def team_id(elem):
-    team = elem.get('TeamId')
-    if team == 'Ball':
+    team = elem.get('TeamId') or elem.get('Club')
+    if team.lower() == 'ball':
         return 0
     return convert_id(team)
 
