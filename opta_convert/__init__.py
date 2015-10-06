@@ -36,7 +36,7 @@ def convert(xml_path, csv_path):
                     player = player_id(elem)
                     team = team_id(elem)
                     
-                    match = convert_id(elem.get('MatchId'))
+                    match = convert_id(elem.get('MatchId') or elem.get('Match'))
                     period = 1+ (elem.get('GameSection') == 'secondHalf')
 
                     for n, frame in enumerate(elem):
